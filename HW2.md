@@ -25,7 +25,10 @@ Importing
 HealthyHarborWaterWheelTotals2018-7-29
 
 ``` r
-TrashWheel = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx")
+TrashWheel = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = 1) %>%
+  janitor::clean_names() %>%
+  drop_na (dumpster)
 ```
 
     ## New names:
