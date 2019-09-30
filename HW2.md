@@ -21,14 +21,16 @@ library(tidyverse)
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
-Importing
-HealthyHarborWaterWheelTotals2018-7-29
+Importing and Cleaning
+Data
 
 ``` r
 TrashWheel = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
                         sheet = 1) %>%
   janitor::clean_names() %>%
-  drop_na (dumpster)
+  drop_na (dumpster) %>%
+  mutate(sports_balls = round(sports_balls, digits = 0)) %>%
+  mutate(sports_balls = as.integer(sports_balls))
 ```
 
     ## New names:
