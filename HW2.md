@@ -21,11 +21,11 @@ library(tidyverse)
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
-Importing and Cleaning
-Data
+Importing and Cleaning Data
 
 ``` r
-TrashWheel = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+TrashWheel = 
+  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
                         sheet = 1) %>%
   janitor::clean_names() %>%
   drop_na (dumpster) %>%
@@ -35,3 +35,30 @@ TrashWheel = read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xl
 
     ## New names:
     ## * `` -> ...15
+    ## * `` -> ...16
+    ## * `` -> ...17
+
+## 2017 Precipitation Data
+
+From viewing the dataset, Precipiation\_2017 is sheet 4 of the excel
+file.
+
+``` r
+Precipitation_2017 = 
+  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = 4)
+```
+
+    ## New names:
+    ## * `` -> ...2
+
+## 2018 Precipitation Data
+
+From viewing the dataset, Precipiation\_2018 is sheet 3 of the excel
+file.
+
+``` r
+Precipitation_2018 = 
+  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = 3)
+```
