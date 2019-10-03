@@ -39,7 +39,9 @@ From viewing the dataset, Precipiation_2017 is sheet 4 of the excel file.
 Precipitation_2017 = 
   read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
                         sheet = 4) %>%
-  janitor::clean_names() 
+  janitor::clean_names()
+  drop_na() %>%
+  mutate (year = "2017")
 ```
 
 ### *2018 Precipitation Data* 
@@ -50,4 +52,6 @@ Precipitation_2018 =
   read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
                         sheet = 3) %>%
   janitor::clean_names() 
+  drop_na() %>%
+  mutate (year = "2018")
 ```
