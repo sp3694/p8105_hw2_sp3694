@@ -62,3 +62,10 @@ Precipitation_2018 =
 ```
 
 ### *Combining Precipitation Data*
+
+``` r
+Precipitation_2017_2018 = 
+  bind_rows(Precipitation_2017, Precipitation_2018) %>%
+  mutate(month = month.name[month]) %>%
+  select(year, month, total)
+```
