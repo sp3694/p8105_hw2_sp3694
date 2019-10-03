@@ -63,7 +63,7 @@ Precipitation_2017_2018 =
   select(year, month, total)
 ```
 
-There are `r nrow(TrashWheel)` observations in the Mr. Trash Wheel dataset. There here are `r nrow(Precipitation_2017_2018)` observations in the combined precipitation dataset. Key variables in the Mr. Trash Wheel data set includes total weight (weight_tons), volume (volume_cubic_yards), and number of specific items (e.g. plastic_bottles, glass_bottles, chip_bags) collected by individual dumpsters, and the date collected is also included. 
+There are `r nrow(TrashWheel)` observations in the Mr. Trash Wheel dataset, and there here are `r nrow(Precipitation_2017_2018)` observations in the combined precipitation dataset. Key variables in the Mr. Trash Wheel data set includes the following: `r colnames(TrashWheel)`. Key variables in the combined precipitation data set includes the following: `r colnames(Precipitation_2017_2018)`. The total precipitation in 2018 was `r sum(pull(Precipitation_2018,total))`. The median number of sports balls in a dumpster in 2017 was `r TrashWheel %>% filter(year == 2017) %>% summarize(median(sports_balls))`.
 
 
 ## Problem 2

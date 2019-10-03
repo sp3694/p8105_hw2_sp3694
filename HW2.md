@@ -70,12 +70,15 @@ Precipitation_2017_2018 =
   select(year, month, total)
 ```
 
-There are 344 observations in the Mr. Trash Wheel dataset. There here
-are 26 observations in the combined precipitation dataset. Key variables
-in the Mr. Trash Wheel data set includes total weight (weight\_tons),
-volume (volume\_cubic\_yards), and number of specific items
-(e.g. plastic\_bottles, glass\_bottles, chip\_bags) collected by
-individual dumpsters, and the date collected is also included.
+There are 344 observations in the Mr. Trash Wheel dataset, and there
+here are 26 observations in the combined precipitation dataset. Key
+variables in the Mr. Trash Wheel data set includes the following:
+dumpster, month, year, date, weight\_tons, volume\_cubic\_yards,
+plastic\_bottles, polystyrene, cigarette\_butts, glass\_bottles,
+grocery\_bags, chip\_bags, sports\_balls, homes\_powered, x15, x16, x17.
+Key variables in the combined precipitation data set includes the
+following: year, month, total. The total precipitation in 2018 was
+140.66. The median number of sports balls in a dumpster in 2017 was 8.
 
 ## Problem 2
 
