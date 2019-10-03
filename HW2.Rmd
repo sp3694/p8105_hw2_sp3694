@@ -27,8 +27,7 @@ TrashWheel =
                         sheet = 1) %>%
   janitor::clean_names() %>%
   drop_na (dumpster) %>%
-  mutate(sports_balls = round(sports_balls, digits = 0)) %>%
-  mutate(sports_balls = as.integer(sports_balls))
+  mutate(sports_balls = as.integer(round(sports_balls, digits = 0)))
 ```
 
 ### *2017 Precipitation Data* 
@@ -52,5 +51,12 @@ Precipitation_2018 =
                         sheet = "2018 Precipitation", skip = 1) %>%
   janitor::clean_names() %>%
   drop_na(total) %>%
-  mutate (year = "2018")
+  mutate(year = "2018")
 ```
+
+### *Combining Precipitation Data* 
+
+```{r}
+
+```
+

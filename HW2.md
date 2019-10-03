@@ -31,8 +31,7 @@ TrashWheel =
                         sheet = 1) %>%
   janitor::clean_names() %>%
   drop_na (dumpster) %>%
-  mutate(sports_balls = round(sports_balls, digits = 0)) %>%
-  mutate(sports_balls = as.integer(sports_balls))
+  mutate(sports_balls = as.integer(round(sports_balls, digits = 0)))
 ```
 
     ## New names:
@@ -42,27 +41,24 @@ TrashWheel =
 
 ### *2017 Precipitation Data*
 
-From viewing the dataset, Precipiation\_2017 is sheet 4 of the excel
-file.
-
 ``` r
-Precipitation_2017 = 
-  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
-                        sheet = 4) %>%
-  janitor::clean_names() 
+Precipitation_2017 =
+  read_excel("./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = "2017 Precipitation", skip = 1) %>%
+  janitor::clean_names() %>%
+  drop_na(total) %>%
+  mutate(year = "2017")
 ```
-
-    ## New names:
-    ## * `` -> ...2
 
 ### *2018 Precipitation Data*
 
-From viewing the dataset, Precipiation\_2018 is sheet 3 of the excel
-file.
-
 ``` r
 Precipitation_2018 = 
-  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
-                        sheet = 3) %>%
-  janitor::clean_names() 
+  read_excel("./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = "2018 Precipitation", skip = 1) %>%
+  janitor::clean_names() %>%
+  drop_na(total) %>%
+  mutate(year = "2018")
 ```
+
+### *Combining Precipitation Data*
