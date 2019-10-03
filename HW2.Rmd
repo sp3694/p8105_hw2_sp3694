@@ -33,25 +33,24 @@ TrashWheel =
 
 ### *2017 Precipitation Data* 
 
-From viewing the dataset, Precipiation_2017 is sheet 4 of the excel file. 
 
 ```{r}
-Precipitation_2017 = 
-  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
-                        sheet = 4) %>%
-  janitor::clean_names()
-  drop_na() %>%
-  mutate (year = "2017")
+Precipitation_2017 =
+  read_excel("./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = "2017 Precipitation", skip = 1) %>%
+  janitor::clean_names() %>%
+  drop_na(total) %>%
+  mutate(year = "2017")
 ```
 
 ### *2018 Precipitation Data* 
-From viewing the dataset, Precipiation_2018 is sheet 3 of the excel file. 
+
 
 ```{r}
 Precipitation_2018 = 
-  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
-                        sheet = 3) %>%
-  janitor::clean_names() 
-  drop_na() %>%
+  read_excel("./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+                        sheet = "2018 Precipitation", skip = 1) %>%
+  janitor::clean_names() %>%
+  drop_na(total) %>%
   mutate (year = "2018")
 ```
