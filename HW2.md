@@ -27,11 +27,11 @@ library(tidyverse)
 
 ``` r
 TrashWheel = 
-  read_excel(path = "./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
+  read_excel("./data/HealthyHarborWaterWheelTotals2018-7-28.xlsx",
                         sheet = 1) %>%
   janitor::clean_names() %>%
   drop_na (dumpster) %>%
-  mutate(sports_balls = as.integer(round(sports_balls, digits = 0)))
+  mutate(sports_balls = as.integer(sports_balls))
 ```
 
     ## New names:
@@ -69,3 +69,14 @@ Precipitation_2017_2018 =
   mutate(month = month.name[month]) %>%
   select(year, month, total)
 ```
+
+There are 344 observations in the Mr. Trash Wheel dataset. There here
+are 26 observations in the combined precipitation dataset. Key variables
+in the Mr. Trash Wheel data set includes total weight (weight\_tons),
+volume (volume\_cubic\_yards), and number of specific items
+(e.g. plastic\_bottles, glass\_bottles, chip\_bags) collected by
+individual dumpsters, and the date collected is also included.
+
+## Problem 2
+
+## Problem 3
