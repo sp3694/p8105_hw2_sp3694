@@ -138,8 +138,13 @@ popular_baby_names = read_csv("./data/Popular_Baby_Names.csv") %>%
 ### *Popularity of Name "Olivia" Table* 
 
 ```{r}
-
+popular_baby_names %>% 
+  filter(childs_first_name == "olivia") %>% 
+  select(-count) %>% 
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "rank") %>%
+knitr::kable()
 ```
-
 
 

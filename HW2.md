@@ -169,10 +169,18 @@ pols_snp_unemp = pols %>%
 
 There are 822 observations, and there are 11 columns. \#\# Problem 3
 
-### *Popular Baby Data*
+### *Popular Baby Names Data*
 
 ``` r
-popular_baby_names = read_csv("./data/Popular_Baby_Names.csv")
+popular_baby_names = read_csv("./data/Popular_Baby_Names.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(ethnicity = recode(ethnicity, "WHITE NON HISP" = "WHITE NON HISPANIC",
+                            "BLACK NON HISP" = "BLACK NON HISPANIC",
+                            "ASIAN AND PACI" = "ASIAN AND PACIFIC ISLANDER")) %>% 
+  mutate(childs_first_name = str_to_lower(childs_first_name),
+         ethnicity = str_to_lower(ethnicity),
+         gender = str_to_lower(gender)) %>% 
+  distinct()
 ```
 
     ## Parsed with column specification:
@@ -184,3 +192,22 @@ popular_baby_names = read_csv("./data/Popular_Baby_Names.csv")
     ##   Count = col_double(),
     ##   Rank = col_double()
     ## )
+
+### *Popularity of Name “Olivia” Table*
+
+``` r
+popular_baby_names %>% 
+  filter(childs_first_name == "olivia") %>% 
+  select(-count) %>% 
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "rank") %>%
+knitr::kable()
+```
+
+| gender | ethnicity                  | childs\_first\_name | 2016 | 2015 | 2014 | 2013 | 2012 | 2011 |
+| :----- | :------------------------- | :------------------ | ---: | ---: | ---: | ---: | ---: | ---: |
+| female | asian and pacific islander | olivia              |    1 |    1 |    1 |    3 |    3 |    4 |
+| female | black non hispanic         | olivia              |    8 |    4 |    8 |    6 |    8 |   10 |
+| female | hispanic                   | olivia              |   13 |   16 |   16 |   22 |   22 |   18 |
+| female | white non hispanic         | olivia              |    1 |    1 |    1 |    1 |    4 |    2 |
