@@ -82,6 +82,8 @@ following: year, month, total. The total precipitation in 2018 was
 
 ## Problem 2
 
+### *Pols-Month Data*
+
 ``` r
 pols =
   read_csv("./data/pols-month.csv") %>%
@@ -107,6 +109,26 @@ pols =
     ##   gov_dem = col_double(),
     ##   sen_dem = col_double(),
     ##   rep_dem = col_double()
+    ## )
+
+### *SNP Data*
+
+``` r
+snp =
+  read_csv("./data/snp.csv") %>%
+  separate(date, c("month", "day", "year")) %>%
+  mutate(
+    year = as.numeric(year),
+    monthnumber = as.numeric(month),
+    month = month.name[monthnumber]) %>%
+  arrange(year, monthnumber) %>%
+  select(year, month, close, -day, -monthnumber)
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   date = col_character(),
+    ##   close = col_double()
     ## )
 
 ## Problem 3
