@@ -98,6 +98,18 @@ snp =
   select(year, month, close, -day, -monthnumber)
 ```
 
+### *Unemployment Data* 
+
+```{r}
+unemployment = read_csv("./data/unemployment.csv") %>%
+  pivot_longer(Jan:Dec,
+    names_to = "month",
+    values_to = "rate") %>%
+  janitor::clean_names() %>%
+  mutate(month = month.name[match(month, month.abb)])
+```
+
+
 ## Problem 3
 
 ```{r}

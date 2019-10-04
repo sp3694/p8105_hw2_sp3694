@@ -131,4 +131,32 @@ snp =
     ##   close = col_double()
     ## )
 
+### *Unemployment Data*
+
+``` r
+unemployment = read_csv("./data/unemployment.csv") %>%
+  pivot_longer(Jan:Dec,
+    names_to = "month",
+    values_to = "rate") %>%
+  janitor::clean_names() %>%
+  mutate(month = month.name[match(month, month.abb)])
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   Year = col_double(),
+    ##   Jan = col_double(),
+    ##   Feb = col_double(),
+    ##   Mar = col_double(),
+    ##   Apr = col_double(),
+    ##   May = col_double(),
+    ##   Jun = col_double(),
+    ##   Jul = col_double(),
+    ##   Aug = col_double(),
+    ##   Sep = col_double(),
+    ##   Oct = col_double(),
+    ##   Nov = col_double(),
+    ##   Dec = col_double()
+    ## )
+
 ## Problem 3
