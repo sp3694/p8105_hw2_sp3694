@@ -121,9 +121,25 @@ There are `r nrow(pols_snp_unemp)` observations, and there are `r ncol(pols_snp_
 ## Problem 3
 
 
-### *Popular Baby Data* 
+### *Popular Baby Names Data* 
 
 ```{r}
-popular_baby_names = read_csv("./data/Popular_Baby_Names.csv")
+popular_baby_names = read_csv("./data/Popular_Baby_Names.csv") %>% 
+  janitor::clean_names() %>% 
+  mutate(ethnicity = recode(ethnicity, "WHITE NON HISP" = "WHITE NON HISPANIC",
+                            "BLACK NON HISP" = "BLACK NON HISPANIC",
+                            "ASIAN AND PACI" = "ASIAN AND PACIFIC ISLANDER")) %>% 
+  mutate(childs_first_name = str_to_lower(childs_first_name),
+         ethnicity = str_to_lower(ethnicity),
+         gender = str_to_lower(gender)) %>% 
+  distinct()
 ```
+
+### *Popularity of Name "Olivia" Table* 
+
+```{r}
+
+```
+
+
 
