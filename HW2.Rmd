@@ -109,6 +109,15 @@ unemployment = read_csv("./data/unemployment.csv") %>%
   mutate(month = month.name[match(month, month.abb)])
 ```
 
+### *Merging Pols, SNP, and Unemployment Data* 
+
+```{r}
+pols_snp_unemp = pols %>%
+  left_join(snp, by = c("year", "month")) %>%
+  left_join(unemployment, by = c("year", "month"))
+```
+
+There are `r nrow(pols_snp_unemp)` observations, and there are `r ncol(pols_snp_unemp)` columns. 
 
 ## Problem 3
 

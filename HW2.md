@@ -159,4 +159,14 @@ unemployment = read_csv("./data/unemployment.csv") %>%
     ##   Dec = col_double()
     ## )
 
+### *Merging Pols, SNP, and Unemployment Data*
+
+``` r
+pols_snp_unemp = pols %>%
+  left_join(snp, by = c("year", "month")) %>%
+  left_join(unemployment, by = c("year", "month"))
+```
+
+There are 822 observations, and there are 11 columns.
+
 ## Problem 3
