@@ -167,6 +167,20 @@ pols_snp_unemp = pols %>%
   left_join(unemployment, by = c("year", "month"))
 ```
 
-There are 822 observations, and there are 11 columns.
+There are 822 observations, and there are 11 columns. \#\# Problem 3
 
-## Problem 3
+### *Popular Baby Data*
+
+``` r
+popular_baby_names = read_csv("./data/Popular_Baby_Names.csv")
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   `Year of Birth` = col_double(),
+    ##   Gender = col_character(),
+    ##   Ethnicity = col_character(),
+    ##   `Child's First Name` = col_character(),
+    ##   Count = col_double(),
+    ##   Rank = col_double()
+    ## )

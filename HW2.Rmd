@@ -118,10 +118,12 @@ pols_snp_unemp = pols %>%
 ```
 
 There are `r nrow(pols_snp_unemp)` observations, and there are `r ncol(pols_snp_unemp)` columns. 
-
 ## Problem 3
 
-```{r}
 
+### *Popular Baby Data* 
+
+```{r}
+popular_baby_names = read_csv("./data/Popular_Baby_Names.csv")
 ```
 
