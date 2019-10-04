@@ -69,7 +69,17 @@ There are `r nrow(TrashWheel)` observations in the Mr. Trash Wheel dataset, and 
 ## Problem 2
 
 ```{r}
-
+pols =
+  read_csv("./data/pols-month.csv") %>%
+  separate(mon, c("year", "month", "day")) %>%
+  mutate(
+    year = as.numeric(year),
+    month = as.numeric(month),
+    month = month.name[month],
+    president = 
+      ifelse((prez_gop == 1 & prez_dem == 0), "gop",
+                       ifelse((prez_dem == 1 & prez_gop == 0), "dem", NA))) %>%
+    select(-prez_gop, -prez_dem, -day)
 ```
 
 ## Problem 3

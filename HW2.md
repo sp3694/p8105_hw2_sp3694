@@ -82,4 +82,31 @@ following: year, month, total. The total precipitation in 2018 was
 
 ## Problem 2
 
+``` r
+pols =
+  read_csv("./data/pols-month.csv") %>%
+  separate(mon, c("year", "month", "day")) %>%
+  mutate(
+    year = as.numeric(year),
+    month = as.numeric(month),
+    month = month.name[month],
+    president = 
+      ifelse((prez_gop == 1 & prez_dem == 0), "gop",
+                       ifelse((prez_dem == 1 & prez_gop == 0), "dem", NA))) %>%
+    select(-prez_gop, -prez_dem, -day)
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   mon = col_date(format = ""),
+    ##   prez_gop = col_double(),
+    ##   gov_gop = col_double(),
+    ##   sen_gop = col_double(),
+    ##   rep_gop = col_double(),
+    ##   prez_dem = col_double(),
+    ##   gov_dem = col_double(),
+    ##   sen_dem = col_double(),
+    ##   rep_dem = col_double()
+    ## )
+
 ## Problem 3
