@@ -70,6 +70,8 @@ Precipitation_2017_2018 =
   select(year, month, total)
 ```
 
+#### TrashWheel and Precipitation Data Description
+
 There are 344 observations in the Mr. Trash Wheel dataset, and there
 here are 26 observations in the combined precipitation dataset. Key
 variables in the Mr. Trash Wheel data set includes the following:
@@ -111,6 +113,13 @@ pols =
     ##   rep_dem = col_double()
     ## )
 
+#### Pols Data Description
+
+There are 822 observations, and there are 9 columns. The range of the
+years is from 1947 to 2015. The dataset contains the following
+variables: year, month, gov\_gop, sen\_gop, rep\_gop, gov\_dem,
+sen\_dem, rep\_dem, president.
+
 ### *SNP Data*
 
 ``` r
@@ -130,6 +139,12 @@ snp =
     ##   date = col_character(),
     ##   close = col_double()
     ## )
+
+#### SNP Data Description
+
+There are 787 observations, and there are 3 columns. The range of the
+years is from 1950 to 2015. The dataset contains the following
+variables: year, month, close.
 
 ### *Unemployment Data*
 
@@ -159,6 +174,12 @@ unemployment = read_csv("./data/unemployment.csv") %>%
     ##   Dec = col_double()
     ## )
 
+#### Unemployment Data Description
+
+There are 816 observations, and there are 3 columns. The range of the
+years is from 1948 to 2015. The dataset contains the following
+variables: year, month, rate.
+
 ### *Merging Pols, SNP, and Unemployment Data*
 
 ``` r
@@ -167,7 +188,14 @@ pols_snp_unemp = pols %>%
   left_join(unemployment, by = c("year", "month"))
 ```
 
-There are 822 observations, and there are 11 columns. \#\# Problem 3
+#### Pols, SNP, and Unemployment Data Description
+
+There are 822 observations, and there are 11 columns. The range of the
+years is from 1947 to 2015. The dataset contains the following
+variables: year, month, gov\_gop, sen\_gop, rep\_gop, gov\_dem,
+sen\_dem, rep\_dem, president, close, rate.
+
+## Problem 3
 
 ### *Popular Baby Names Data*
 
@@ -212,6 +240,9 @@ knitr::kable()
 | female | hispanic                   | olivia              |   13 |   16 |   16 |   22 |   22 |   18 |
 | female | white non hispanic         | olivia              |    1 |    1 |    1 |    1 |    4 |    2 |
 
+The table above shows the rank in popularity of the name “Olivia” as a
+female baby name by ethnicity over time (2016 to 2011).
+
 ### *Popular Male Name Table*
 
 ``` r
@@ -232,7 +263,7 @@ knitr::kable()
 | male   | white non hispanic         |    1 | joseph | david  | joseph | david  | joseph | michael |
 
 The table above shows the most popular name among male children by
-ethnicity and year (2016 to 2011).
+ethnicity over time (2016 to 2011).
 
 ### *Scatter Plot for Male, White Non-Hispanic Children Born in 2016*
 

@@ -63,6 +63,8 @@ Precipitation_2017_2018 =
   select(year, month, total)
 ```
 
+#### TrashWheel and Precipitation Data Description 
+
 There are `r nrow(TrashWheel)` observations in the Mr. Trash Wheel dataset, and there here are `r nrow(Precipitation_2017_2018)` observations in the combined precipitation dataset. Key variables in the Mr. Trash Wheel data set includes the following: `r colnames(TrashWheel)`. Key variables in the combined precipitation data set includes the following: `r colnames(Precipitation_2017_2018)`. The total precipitation in 2018 was `r sum(pull(Precipitation_2018,total))`. The median number of sports balls in a dumpster in 2017 was `r TrashWheel %>% filter(year == 2017) %>% summarize(median(sports_balls))`.
 
 
@@ -84,6 +86,11 @@ pols =
     select(-prez_gop, -prez_dem, -day)
 ```
 
+#### Pols Data Description 
+
+There are `r nrow(pols)` observations, and there are `r ncol(pols)` columns. The range of the years is from `r min(pull(pols, year))` to `r max(pull(pols, year))`. The dataset contains the following variables: `r colnames(pols)`.
+
+
 ### *SNP Data* 
 
 ```{r}
@@ -98,6 +105,10 @@ snp =
   select(year, month, close, -day, -monthnumber)
 ```
 
+#### SNP Data Description 
+
+There are `r nrow(snp)` observations, and there are `r ncol(snp)` columns. The range of the years is from `r min(pull(snp, year))` to `r max(pull(pols, year))`. The dataset contains the following variables: `r colnames(snp)`.
+
 ### *Unemployment Data* 
 
 ```{r}
@@ -109,6 +120,10 @@ unemployment = read_csv("./data/unemployment.csv") %>%
   mutate(month = month.name[match(month, month.abb)])
 ```
 
+#### Unemployment Data Description 
+
+There are `r nrow(unemployment)` observations, and there are `r ncol(unemployment)` columns. The range of the years is from `r min(pull(unemployment, year))` to `r max(pull(unemployment, year))`. The dataset contains the following variables: `r colnames(unemployment)`.
+
 ### *Merging Pols, SNP, and Unemployment Data* 
 
 ```{r}
@@ -117,7 +132,11 @@ pols_snp_unemp = pols %>%
   left_join(unemployment, by = c("year", "month"))
 ```
 
-There are `r nrow(pols_snp_unemp)` observations, and there are `r ncol(pols_snp_unemp)` columns. 
+#### Pols, SNP, and Unemployment Data Description 
+
+There are `r nrow(pols_snp_unemp)` observations, and there are `r ncol(pols_snp_unemp)` columns. The range of the years is from `r min(pull(pols_snp_unemp, year))` to `r max(pull(pols_snp_unemp, year))`. The dataset contains the following variables: `r colnames(pols_snp_unemp)`.
+
+
 ## Problem 3
 
 
@@ -147,6 +166,8 @@ popular_baby_names %>%
 knitr::kable()
 ```
 
+The table above shows the rank in popularity of the name “Olivia” as a female baby name by ethnicity over time (2016 to 2011). 
+
 ### *Popular Male Name Table*
 
 ```{r}
@@ -159,7 +180,7 @@ popular_baby_names %>%
 knitr::kable()
 ```
 
-The table above shows the most popular name among male children by ethnicity and year (2016 to 2011). 
+The table above shows the most popular name among male children by ethnicity over time (2016 to 2011). 
 
 ### *Scatter Plot for Male, White Non-Hispanic Children Born in 2016*
 
