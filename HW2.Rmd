@@ -147,4 +147,40 @@ popular_baby_names %>%
 knitr::kable()
 ```
 
+### *Popular Male Name Table*
+
+```{r}
+popular_baby_names %>% 
+  filter(gender == "male", rank == 1) %>%
+  select(-count) %>% 
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "childs_first_name") %>%
+knitr::kable()
+```
+
+The table above shows the most popular name among male children by ethnicity and year (2016 to 2011). 
+
+### *Scatter Plot for Male, White Non-Hispanic Children Born in 2016*
+
+```{r}
+popular_baby_names %>% 
+  filter(
+    gender == "male",
+    ethnicity == "white non hispanic",
+    year_of_birth == 2016) %>% 
+  ggplot(aes(x=rank, y= count)) +
+  theme_minimal() +
+  geom_point () +
+  labs(
+    title = "Male, White Non-Hispanic Children Born in 2016",
+    x = "Rank in Popularity",
+    y = "Number of Children"
+  ) +
+  geom_text(aes(label = childs_first_name),
+            hjust = 1,
+            vjust = 1,
+            check_overlap = TRUE,
+            size = 2.5)
+```
 

@@ -211,3 +211,50 @@ knitr::kable()
 | female | black non hispanic         | olivia              |    8 |    4 |    8 |    6 |    8 |   10 |
 | female | hispanic                   | olivia              |   13 |   16 |   16 |   22 |   22 |   18 |
 | female | white non hispanic         | olivia              |    1 |    1 |    1 |    1 |    4 |    2 |
+
+### *Popular Male Name Table*
+
+``` r
+popular_baby_names %>% 
+  filter(gender == "male", rank == 1) %>%
+  select(-count) %>% 
+  pivot_wider(
+    names_from = "year_of_birth",
+    values_from = "childs_first_name") %>%
+knitr::kable()
+```
+
+| gender | ethnicity                  | rank | 2016   | 2015   | 2014   | 2013   | 2012   | 2011    |
+| :----- | :------------------------- | ---: | :----- | :----- | :----- | :----- | :----- | :------ |
+| male   | asian and pacific islander |    1 | ethan  | jayden | jayden | jayden | ryan   | ethan   |
+| male   | black non hispanic         |    1 | noah   | noah   | ethan  | ethan  | jayden | jayden  |
+| male   | hispanic                   |    1 | liam   | liam   | liam   | jayden | jayden | jayden  |
+| male   | white non hispanic         |    1 | joseph | david  | joseph | david  | joseph | michael |
+
+The table above shows the most popular name among male children by
+ethnicity and year (2016 to 2011).
+
+### *Scatter Plot for Male, White Non-Hispanic Children Born in 2016*
+
+``` r
+popular_baby_names %>% 
+  filter(
+    gender == "male",
+    ethnicity == "white non hispanic",
+    year_of_birth == 2016) %>% 
+  ggplot(aes(x=rank, y= count)) +
+  theme_minimal() +
+  geom_point () +
+  labs(
+    title = "Male, White Non-Hispanic Children Born in 2016",
+    x = "Rank in Popularity",
+    y = "Number of Children"
+  ) +
+  geom_text(aes(label = childs_first_name),
+            hjust = 1,
+            vjust = 1,
+            check_overlap = TRUE,
+            size = 2.5)
+```
+
+![](HW2_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
